@@ -1,0 +1,43 @@
+data = {
+                "messaging_product": "whatsapp",
+                "recipient_type": "individual",
+                "to": number,
+                "context": {
+                    "message_id": "preferencias"
+                },
+                "type": "interactive",
+                "interactive": {
+                    "type": "list",
+                    "body": {
+                        "text": "✅ Tenemos estas opciones para empezar"
+                    },
+                    "footer": {
+                        "text": "Selecciona una opción"
+                    },
+                    "action": {
+                        "button": "Ver opciones",
+                        "sections": [
+                            {
+                                "title": "¿Por cuáles opciones quiere empezar?",
+                                "rows": [
+                                    {
+                                        "id": "presupuesto",
+                                        "title": "Presupuesto",
+                                        "description": "Establecer un presupuesto para el viaje"
+                                    },
+                                    {
+                                        "id": "categorias",
+                                        "title": "Categorías de lugares",
+                                        "description": "Cuáles son los tipos de lugarías que te gustaría conocer"
+                                    },
+                                    {
+                                        "id": "preferencias",
+                                        "title": "Preferncias",
+                                        "description": "¿Qué es eso que más te gusta para hacer a la hora de viajar?"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
