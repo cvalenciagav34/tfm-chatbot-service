@@ -60,11 +60,13 @@ def processMessage(text, number):
             dataMenu = opcionesPlan.ListsMessageIntereses(number)
             listData.append(data)
             listData.append(dataMenu)
+            pushContextMessage("Explorar planes de qué hacer en Medellín")
         elif "historia medellín" in text:
             data = util.textMessage("¿Qué presupuesto tienes por día?", number)
             dataMenu = opcionesPlan.ListsMessagePresupuestoHistoria(number)
             listData.append(data)
             listData.append(dataMenu)
+            pushContextMessage("Explorar planes de lugares para conocer la historia de Medellín")
         elif "10.000 a 30.000"  in text:
             prompt = "Dame una sugerencia de dos tours para conocer la historia de Medellín donde su costo esté entre 10.000 a 30.000. Incluyendo el de la comuna 13. Inicia la respuesta desde las palabras te recomendaría."
             data = preguntarChatGPT(prompt,number)
@@ -88,6 +90,7 @@ def processMessage(text, number):
             dataMenu = opcionesPlan.ListsMessagePresupuestoParches(number)
             listData.append(data)
             listData.append(dataMenu)
+            pushContextMessage("Explorar planes de discotecas, bares, restaurantes de Medellín")
         elif "menos de 40.000"  in text:
             prompt = "Dame una sugerencia de dos lugares recomendados de la ciudad de Medellín para salir con amigos a comer o bailar y que no implique gastar más de 40.000. Inicia la respuesta desde las palabras te recomendaría."
             data = preguntarChatGPT(prompt,number)
@@ -106,7 +109,7 @@ def processMessage(text, number):
             dataMenu = opcionesGenerales.ButtonsMessageSeguirExplorando(number)
             listData.append(data)
             listData.append(dataMenu) 
-        elif "si" in text:
+        elif "si" in text and len(text) <=2:
             data = util.textMessage("¿Qué te gustaría hacer?", number)
             dataMenu = opcionesPlan.ListsMessageIntereses(number)
             listData.append(data)
@@ -130,6 +133,10 @@ def preguntarChatGPT(text, number):
     else:
         data = util.textMessage("Lo siento ocurrió un problema", number)
     return data
+
+def pushContextMessage(text):
+    contexto = "El usuario dice " + text + ". No des respuesta. Solo es para que tengas el contexto."
+    preguntarChatGPT(contexto,0)
 
 def generateMessage(text, number):
 
