@@ -142,8 +142,7 @@ def preguntarChatGPT(text, number):
     return data
 
 def pushContextMessage(text):
-    contexto = "El usuario dice " + text + ". No des respuesta. Solo es para que tengas el contexto."
-    preguntarChatGPT(contexto,0)
+    preguntarChatGPT(text,0)
 
 def generateMessage(text, number):
 
