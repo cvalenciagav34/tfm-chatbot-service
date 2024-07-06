@@ -4,6 +4,9 @@ import whatsappservice
 import chatgptservice
 import opcionesGenerales
 import opcionesPlan
+from dotenv import load_dotenv
+import os
+import json
 
 app = Flask(__name__)
 
@@ -16,7 +19,11 @@ def index():
 @app.route('/whatsapp', methods=['GET'])
 def verifyToken():
     try:
-        accessToken = "EAAPZCJ4vaPW0BO1XYSMXMNQKlCbEm1WZCOOhZCZBRxLhclP9UAZBcIKxyXQpezk4NhnQwxNpPiOfOBGzF4ilcA4MZCyf3pV8fqIg7ZA4SzZAmato3RjIRCzbfEJQWfyOZCSGZCv5gB4S4LXKRqjcuke8KNUHZAhIoP63AjyZAQL54T0dXYpvfeUiE3mb2PPPmhPA9igHF4bgG3Dz581larYd"
+        with open('config.json', 'r') as config_file:
+            config = json.load(config_file)
+        token_json = config.get('token_whatsapp')
+        load_dotenv()
+        accessToken = os.getenv('token_whatsapp',token_json)
         token = request.args.get("hub.verify_token")
         challenge = request.args.get("hub.challenge")
 

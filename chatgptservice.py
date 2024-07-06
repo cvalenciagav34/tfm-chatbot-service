@@ -15,7 +15,7 @@ def getResponse(text):
         completion = openai.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-                {"role": "system", "content": "You are a helpful assistant designed to help me in travel plans."},
+                {"role": "system", "content": "You are a helpful assistant designed to help me in travel plans in Medellín."},
                 {"role": "user", "content": text}
                 ]
         )
